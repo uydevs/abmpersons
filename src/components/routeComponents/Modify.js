@@ -10,9 +10,10 @@ class Modify extends Component{
   constructor(props){
     super(props);
     this.state ={
-      newName:"",
-      newSurname:"",
-      newAge: 0,
+      newName: props.selectedPerson.name,
+      newSurname: props.selectedPerson.surname,
+      newAge: props.selectedPerson.age,
+
     }
   }
 
@@ -38,9 +39,9 @@ class Modify extends Component{
         <label>{selectedPerson.surname + " "}</label>
         <label>{selectedPerson.age + " años"}</label>
         <h3>Nuevos Datos</h3>
-        <input type="text" placeholder="Nombre" onChange={this.handleChangeName}></input>
-        <input type="text" placeholder="Apellido" onChange={this.handleChangeSurname}></input>
-        <input type="Number" placeholder="Edad" onChange={this.handleChangeAge}></input>
+        <input type="text" placeholder="Nombre" value={this.state.newName} onChange={this.handleChangeName}></input>
+        <input type="text" placeholder="Apellido" value={this.state.newSurname} onChange={this.handleChangeSurname}></input>
+        <input type="Number" placeholder="Edad" value={this.state.newAge} onChange={this.handleChangeAge}></input>
         <button onClick={()=>onModifyPerson(this.state.newName, this.state.newSurname, this.state.newAge)}>Guardar</button>
 
       </div>
