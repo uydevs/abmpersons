@@ -54,21 +54,31 @@ class App extends Component{
   }
 
   handleModifyPerson = (newName, newSurname, newAge) => {
-    let listPersons = [...this.state.persons];
-    let personToModify = listPersons.find((p) => p.name===this.state.selectedPerson.name);
+    if(newName!= "" && newSurname != "" && newAge != ""){
+
+    //personToModify no se puede cambiar derecho. Se estaria mutando el estado.
+    let personToModify = this.state.persons.find((p) => p.name===this.state.selectedPerson.name);
+    const modifiedPerson = {
+      ...personToModify, 
+      name: newName,
+      surname: newSurname,
+      age: newAge};
+
+
+      const modifiedListPersons = this.state.persons.map((p) => {
+        if(p!== personToModify){
+          return p;
+        }
+        else{
+          return modifiedPerson;
+        }
+      });
+
+      this.props.history.push("/");
+      this.setState({persons:modifiedListPersons});
+
+    }    
     
-    if(newName != ""){
-      personToModify.name = newName;
-    }
-    if(newSurname != ""){
-      personToModify.surname = newSurname;
-    }
-    if(newAge != ""){
-      personToModify.age = Number(newAge);
-    }
-    
-    this.setState({persons:listPersons});
-    this.props.history.push("/");
   }
 
 
