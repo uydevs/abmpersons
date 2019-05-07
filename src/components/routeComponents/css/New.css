@@ -1,0 +1,5 @@
+.New input[type="text"], input[type="number"] {
+  display: block;
+  margin: auto;
+  margin-bottom: 2px
+}
