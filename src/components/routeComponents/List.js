@@ -15,9 +15,7 @@ class List extends Component{
     history: PropTypes.object,
   }
 
-  handleShowPerson = (p) => {
-    
-  }
+ 
 
   
   render(){
